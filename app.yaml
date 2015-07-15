@@ -1,8 +1,8 @@
 application: libraryappointment
 version: 1
-runtime: python27
+runtime: php55
 api_version: 1
-threadsafe: yes
+threadsafe: no
 
 handlers:
 - url: /
@@ -13,6 +13,8 @@ handlers:
   static_files: site/\1
   upload: site/(.*\.(gif|png|jpg|ico|bmp|css|otf|eot|svg|ttf|woff))
 
-libraries:
-- name: webapp2
-  version: "2.5.2"
+- url: /js
+  static_dir: site/js
+
+- url: /.*
+  script: site/request/send_request.php
