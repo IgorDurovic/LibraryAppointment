@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CLAM</title>
+    <title>Agency - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Computer Lab Appointment Maker</a>
+                <a class="navbar-brand page-scroll" href="#page-top">APPointment</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,9 +57,6 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Log In</a>
-                    </li>
-					<li>
-                        <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#calendar">Calendar</a>
@@ -84,8 +81,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="row">
+                    <form name="sentMessage" id="contactForm" no validate>
+                        <div class="row" style="color:white;">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
@@ -96,13 +93,66 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="The desired date for Computer Lab *" id="date" required data-validation-required-message="Please enter your date.">
+                                    <input type="tel" class="form-control" placeholder="The desired date for Computer Lab (dd/mm/yyyy) *" id="date" required data-validation-required-message="Please enter your date.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <h2>Choose a Lab</h2>
+                                    <input type="radio" name="room" value="Library"> Library (36 computers)</input><br>
+                                    <input type="radio" name="room" value="229"> 229 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="433"> 433 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="D402"> D402 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T204"> T204 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T206"> T206 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T208"> T208 (SAGE testing only)</input><br>
+                                    <input type="radio" name="room" value="409"> 409 (SAGE testing only)</input><br>
+                                    <input type="radio" name="room" value="B-307"> B-307 (CTE only)</input><br>
+                                    <input type="radio" name="room" value="407"> 407 (CTE only)</input><br>
+                                    <input type="radio" name="room" value="T-115"> T-115 (CTE only)</input><br>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <input type="period" class="form-control" placeholder="period (1-4) *" id="start" required data-validation-required-message="Enter start time.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Enter password.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <br><br>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h2>Choose Equipment</h2>
+                                    <input type="checkbox" name="room" value="lc1"> Laptop cart 1 (30 quantity) </input><br>
+                                    <input type="checkbox" name="room" value="lc2"> Laptop cart 2 (30 quantity) </input><br>
+                                    <input type="checkbox" name="room" value="lc3"> Laptop cart 3 (30 quantity) </input><br>
+                                    <input type="checkbox" name="room" value="mphones"> Microphones (20 quantity)</input><br>
+                                    <input type="checkbox" name="room" value="ephones"> Earphones (30 quantity) </input><br>
+                                    <input type="checkbox" name="room" value="op1"> Overhead Projector 1 </input><br>
+                                    <input type="checkbox" name="room" value="op2"> Overhead Projector 2 </input><br>
+                                    <input type="checkbox" name="room" value="fcam"> Flip Camera </input><br>
+                                    <input type="checkbox" name="room" value="ps1"> Projector Screen 1 </input><br>
+                                    <input type="checkbox" name="room" value="ps2"> Projector Screen 2 </input><br>
+                                    <input type="checkbox" name="room" value="ps3"> Projector Screen 3 </input><br>
+                                    <input type="checkbox" name="room" value="twriter"> Typewriter</input><br>
+                                    <input type="checkbox" name="room" value="combo"> TV/DVD/VCR combo </input>
+                                    <h4 style="text-decoration:underline">Library Only</h4>
+                                    <input type="checkbox" name="room" value="croom"> Conference Room </input><br>
+                                    <input type="checkbox" name="room" value="sr1"> Study Room 1 </input><br>
+                                    <input type="checkbox" name="room" value="sr2"> Study Room 2 </input><br>
+                                    <input type="checkbox" name="room" value="sr3"> Study Room 3 </input><br>
+                                    <input type="checkbox" name="room" value="etables"> East tables (50 seats/12 tables) </input><br>
+                                    <input type="checkbox" name="room" value="wtables"> West tables (20 seats/5 tables) </input>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -117,29 +167,6 @@
             </div>
         </div>
     </section>
-	
-		
-	<!-- About Section -->
-	<section id="about">
-        <div class="container">
-            <div class="col">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-				</div>
-				<div class="col-lg-12">
-						<a style="pointer-events: none; cursor: default;" href="page.html" target="_blank"> <img src="http://i60.tinypic.com/1z6tg1t.jpg" border="0"></a>
-						<h3 class="section-subheading" style="color:black;">Please select the day(s) you wish to use the computer lab.</h3>
-						
-						<a style="pointer-events: none; cursor: default;" href="page.html" target="_blank"> <img src="http://i60.tinypic.com/1z6tg1t.jpg" border="0"></a>
-						<h3 class="section-subheading" style="color:black;">Then select the time you want .</h3>
-				</div>
-			</div>
-			<div>
-
-			</div>
-		</div>
-	</section>
-
 
     <!-- Calendar Section -->
     <section id="calendar">
@@ -156,7 +183,6 @@
         </div>
     </section>
 
-	
     <footer>
         <div class="container">
             <div class="row">
@@ -166,7 +192,7 @@
             </div>
         </div>
     </footer>
-	
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
