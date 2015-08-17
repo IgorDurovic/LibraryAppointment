@@ -21,7 +21,7 @@ if(empty($_POST['name'])  		||
    }
 
 $password = $_POST['start'];
-if($password == "panther"){
+if($password == INSERT_PASSWORD_HERE){
 	echo "Incorrect Password";
 	return false;
 }
