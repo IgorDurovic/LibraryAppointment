@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agency - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var d = new Date();
+            var day = new Date(d.getFullYear(), d.getMonth(), 1).getDay();
+
+            var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            $("#calendar-table").prepend("<th colspan='7'><h2 style='text-align:center'>" + months[d.getMonth()] + " 2016</h2></th>");
+
+            content = "<tr>";
+            for(i = 0; i < day; i++){
+                content += "<td> </td>";
+            }
+
+            for(i = 1; i < new Date(d.getYear(), d.getMonth(), 0).getDate(); i++){
+
+                //content += "<td><br><h4 id='" + d.getMonth() + "-" + i + "' onclick="" ><center>" + i + "</center></h4><br></td>";
+                //content += "<td><br><h4 onclick=\"display_day_information(" + d.getMonth() + "," + i + ")\" ><center>" + i + "</center></h4><br></td>";
+                content += "<td><br><h4 onclick=\"display_day_information( " + d.getMonth() +", " +i+" )\" ><center>" + i + "</center></h4><br></td>";
+                day++;
+
+                if(day == 7){
+                    day = 0;
+                    content += "</tr><tr>";
+                }
+            }
+
+            content += "</tr>";
+            $("#calendar-table").append(content);
+        });
+    </script>
+
+</head>
+
+<body id="page-top" class="index" >
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:black;">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">APPointment</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Log In</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#calendar">Calendar</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Log In</h2>
+                    <h3 class="section-subheading" style="color:white;">You must use the @slcschools.org email address that was designated to you.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" no validate>
+                        <div class="row" style="color:white;">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="The desired date for Computer Lab (dd/mm/yyyy) *" id="date" required data-validation-required-message="Please enter your date.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <h2>Choose a Lab</h2>
+                                    <input type="radio" name="room" value="Library"> Library (36 computers)</input><br>
+                                    <input type="radio" name="room" value="229"> 229 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="433"> 433 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="D402"> D402 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T204"> T204 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T206"> T206 (30 computers)</input><br>
+                                    <input type="radio" name="room" value="T208"> T208 (SAGE testing only)</input><br>
+                                    <input type="radio" name="room" value="409"> 409 (SAGE testing only)</input><br>
+                                    <input type="radio" name="room" value="B-307"> B-307 (CTE only)</input><br>
+                                    <input type="radio" name="room" value="407"> 407 (CTE only)</input><br>
+                                    <input type="radio" name="room" value="T-115"> T-115 (CTE only)</input><br>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="period" class="form-control" placeholder="period (1-4) *" id="start" required data-validation-required-message="Enter start time.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Enter password.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <br><br>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h2>Choose Equipment</h2>
+                                    <input type="checkbox" name="equipment" value="lc1"> Laptop cart 1 (30 quantity) </input><br>
+                                    <input type="checkbox" name="equipment" value="lc2"> Laptop cart 2 (30 quantity) </input><br>
+                                    <input type="checkbox" name="equipment" value="lc3"> Laptop cart 3 (30 quantity) </input><br>
+                                    <input type="checkbox" name="equipment" value="mphones"> Microphones (20 quantity)</input><br>
+                                    <input type="checkbox" name="equipment" value="ephones"> Earphones (30 quantity) </input><br>
+                                    <input type="checkbox" name="equipment" value="op1"> Overhead Projector 1 </input><br>
+                                    <input type="checkbox" name="equipment" value="op2"> Overhead Projector 2 </input><br>
+                                    <input type="checkbox" name="equipment" value="fcam"> Flip Camera </input><br>
+                                    <input type="checkbox" name="equipment" value="ps1"> Projector Screen 1 </input><br>
+                                    <input type="checkbox" name="equipment" value="ps2"> Projector Screen 2 </input><br>
+                                    <input type="checkbox" name="equipment" value="ps3"> Projector Screen 3 </input><br>
+                                    <input type="checkbox" name="equipment" value="twriter"> Typewriter</input><br>
+                                    <input type="checkbox" name="equipment" value="combo"> TV/DVD/VCR combo </input>
+                                    <h4 style="text-decoration:underline">Library Only</h4>
+                                    <input type="checkbox" name="equipment" value="croom"> Conference Room </input><br>
+                                    <input type="checkbox" name="equipment" value="sr1"> Study Room 1 </input><br>
+                                    <input type="checkbox" name="equipment" value="sr2"> Study Room 2 </input><br>
+                                    <input type="checkbox" name="equipment" value="sr3"> Study Room 3 </input><br>
+                                    <input type="checkbox" name="equipment" value="etables"> East tables (50 seats/12 tables) </input><br>
+                                    <input type="checkbox" name="equipment" value="wtables"> West tables (20 seats/5 tables) </input>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Send Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar-section">
+        <div class="container">
+            <center>
+                <div id="calendar">
+                    <table id="calendar-table">
+
+                        <tr>
+                        <th>&nbsp;&nbsp;Sunday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Monday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Tuesday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Wednesday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Thursday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Friday&nbsp;&nbsp;</th>
+                        <th>&nbsp;&nbsp;Saturday&nbsp;&nbsp;</th>
+                        </tr>
+
+                    </table>
+                </div>
+            </center>
+        </div>
+        <div id="day-information" style="color:black; font-size: 20px; text-align:center;" >
+        
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <center>
+                    <span class="copyright">Copyright &copy; Igor Durovic & Christopher Chen 2015</span>
+                </center>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
