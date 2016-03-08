@@ -47,7 +47,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/agency.js"></script>
-    <script src="js/custom.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -57,7 +56,7 @@
             var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-            $("#calendar-table").prepend("<th colspan='7'><h2 style='text-align:center'>" + months[d.getMonth()] + " 2016</h2></th>");
+            $("#calendar-table").prepend("<th colspan='7'><h2 style='text-align:center'>" + months[d.getMonth()] + " 2015</h2></th>");
 
             content = "<tr>";
             for(i = 0; i < day; i++){
@@ -66,9 +65,7 @@
 
             for(i = 1; i < new Date(d.getYear(), d.getMonth(), 0).getDate(); i++){
 
-                //content += "<td><br><h4 id='" + d.getMonth() + "-" + i + "' onclick="" ><center>" + i + "</center></h4><br></td>";
-                //content += "<td><br><h4 onclick=\"display_day_information(" + d.getMonth() + "," + i + ")\" ><center>" + i + "</center></h4><br></td>";
-                content += "<td><br><h4 onclick=\"display_day_information( " + d.getMonth() +", " +i+" )\" ><center>" + i + "</center></h4><br></td>";
+                content += "<td><br><h4><center>" + i + "</center></h4><br></td>";
                 day++;
 
                 if(day == 7){
@@ -84,7 +81,7 @@
 
 </head>
 
-<body id="page-top" class="index" >
+<body id="page-top" class="index">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color:black;">
@@ -239,9 +236,6 @@
                     </table>
                 </div>
             </center>
-        </div>
-        <div id="day-information" style="color:black; font-size: 20px; text-align:center;" >
-        
         </div>
     </section>
 
