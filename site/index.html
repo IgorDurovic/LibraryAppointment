@@ -68,7 +68,8 @@
 
                 //content += "<td><br><h4 id='" + d.getMonth() + "-" + i + "' onclick="" ><center>" + i + "</center></h4><br></td>";
                 //content += "<td><br><h4 onclick=\"display_day_information(" + d.getMonth() + "," + i + ")\" ><center>" + i + "</center></h4><br></td>";
-                content += "<td><br><h4 onclick=\"display_day_information( " + d.getMonth() +", " +i+" )\" ><center>" + i + "</center></h4><br></td>";
+				// TODO update year
+                content += "<td><br><h4 onclick=\"display_day_information( " + d.getMonth() +", " +i+", 2016 )\" ><center>" + i + "</center></h4><br></td>";
                 day++;
 
                 if(day == 7){
@@ -84,7 +85,7 @@
 
 </head>
 
-<body id="page-top" class="index" >
+<body id="page-top" class="index" onload="readTextFile('LibraryAppointment-master\site\/request/schdule.txt')" >
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color:black;">
