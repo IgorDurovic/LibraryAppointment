@@ -21,7 +21,7 @@ if(empty($_POST['name'])  		||
    }
 
 $password = $_POST['start'];
-if($password == INSERT_PASSWORD_HERE){
+if($password == "PANTHERS"){
 	echo "Incorrect Password";
 	return false;
 }
@@ -50,11 +50,13 @@ while(true){
 $date = $_POST['date'];
 $message = $_POST['message'];
 $to = 'id.tesla@gmail.com';
+$secondEmail = 'nithin.ch10@gmail.com';
 
 $email_subject = "Website Contact Form:  $name";
 $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\ndate: $date\n\nMessage:\n$message";
 $headers = "From: $email_address\n";
 $headers .= "Reply-To: $email_address";	
 mail($to,$email_subject,$email_body,$headers);
+mail($secondEmail,$email_subject,$email_body,$headers);
 return true;			
 ?>
