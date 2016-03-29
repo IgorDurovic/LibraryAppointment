@@ -1,0 +1,4 @@
+1. Input from checkbox and equipment (to send through ajax)
+2. Parse West High Faculty page for emails
+3. Create a calendar using the checked boxes and equipment
+4. Implement a checker in the send request php file to make sure there is not double booking
