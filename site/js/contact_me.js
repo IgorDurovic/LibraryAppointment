@@ -12,21 +12,25 @@ $(function() {
             var email = $("input#email").val();
             var date = $("input#date").val();
             var message = $("textarea#message").val();
-            var password = $("input#password").val()
+            var password = $("input#password").val();
+            var room = $("input#room").val();
+            var equipment = $("input#equipment").val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "./../request/send_request.php",
+                url: "././request/send_request.php",
                 type: "POST",
                 data: {
                     name: name,
                     date: date,
                     email: email,
-                    message: message
-                    password: password
+                    message: message,
+                    password: password,
+                    room: room,
+                    equipment: equipment,
                 },
                 cache: false,
                 success: function() {
@@ -42,8 +46,10 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function() {
-                    // Fail message
+                error: function(xhr, desc, err) {
+                  //fail message
+                  console.log(xhr);
+                  console.log("Details: " + desc + "\nError:" + err);
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");

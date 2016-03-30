@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
 
 class Entry{
 	public $teacher = "";
@@ -7,25 +9,28 @@ class Entry{
 	public $duration = -1;
 }
 /*
-INPUTS from ajax
 name: name,
 date: date,
 email: email,
 message: message
 password: password
+room: room,
+equipment: equipment;
 */
-$name = $_POST['name'];
-$date = $_POST['date']
-$email = $_POST['email'];
-$message = $_POST['message'];
-$password = $_POST['password'];
+$name = $_REQUEST['name'];
+$date = $_REQUEST['date'];
+$email = $_REQUEST['email'];
+$message = $_REQUEST['message'];
+$password = $_REQUEST['password'];
+$room = $_REQUEST['room'];
+$equipment = $_REQUEST['equipment'];
 
 
 // Check for empty fields
 if(empty($name)  		||
    empty($email) 		||
    empty($date) 		||
-   empty($password]))
+   empty($password))
   {
 	echo "No arguments Provided!";
 	return false;
@@ -39,34 +44,38 @@ if ($email_domain !== "slcschools.org") {
 }
 
 //password check
-if($password !== "PANTHERS"){
-	echo "Incorrect Password";
-	return false;
-}
+// if($password !== "PANTHERS"){
+// 	echo "Incorrect Password";
+// 	return false;
+// }
 
 $curFileR = fopen("schedule.txt", "r") or die("Unable to open file!");
-$curFileW = fopen("schedule.txt", "w") or die("Unable to open file!");
+$curFileW = fopen("./../schedule.txt", "w") or die("Unable to open file!");
 
-$validEmails = fopen("valid-mails.txt", "r") or die("Unable to open file");
+// $validEmails = fopen("valid-mails.txt", "r") or die("Unable to open file");
 
-while(true){
-	$emailFormated = trim($email);
-	$temp = trim(fget($validEmails));
-	if(temp == $emailFormated){
-		break;
-	}
-	else if(feof($validEmails)){
-		echo "Invalid email";
-		return false;
-	}
-}
+// while(true){
+// 	$emailFormated = trim($email);
+// 	$temp = trim(fget($validEmails));
+// 	if(temp == $emailFormated){
+// 		break;
+// 	}
+// 	else if(feof($validEmails)){
+// 		echo "Invalid email";
+// 		return false;
+// 	}
+// }
 
-$to      = 'nithin.ch10@gmail.com';
-$subject = 'LibraryAppointment';
-$message = "Someone reserved equipment at West High:\n\n\nName: $name \n\nEmail: $email \n\nDate: $date \n\nMessage: $message ";
-$headers = "From: $email" . "\r\n" .
-  "Reply-To: $email" . "\r\n";
-
-mail($to, $subject, $message, $headers);
+fwrite($curFileW, $room);
+fwrite($curFileW, "\n\n\n\n\n\n");
+fwrite($curFileW, $equipment);
+//
+// $to      = 'nithin.ch10@gmail.com';
+// $subject = 'LibraryAppointment';
+// $message = "Someone reserved equipment at West High:\n\n\nName: $name \n\nEmail: $email \n\nDate: $date \n\nMessage: $message ";
+// $headers = "From: $email" . "\r\n" .
+//   "Reply-To: $email" . "\r\n";
+//
+// mail($to, $subject, $message, $headers);
 return true;
 ?>

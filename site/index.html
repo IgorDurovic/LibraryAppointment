@@ -38,7 +38,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="js/classie.js"></script>
 
     <!-- Contact Form JavaScript -->
@@ -148,7 +148,7 @@
                                     <input type="tel" class="form-control" placeholder="The desired date for Computer Lab (dd/mm/yyyy) *" id="date" required data-validation-required-message="Please enter your date.">
                                     <p class="help-block text-danger"></p>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="room">
                                     <h2>Choose a Lab</h2>
                                     <input type="radio" name="room" value="Library"> Library (36 computers)</input><br>
                                     <input type="radio" name="room" value="229"> 229 (30 computers)</input><br>
@@ -183,7 +183,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" id="equipment">
                                     <h2>Choose Equipment</h2>
                                     <input type="checkbox" name="equipment" value="lc1"> Laptop cart 1 (30 quantity) </input><br>
                                     <input type="checkbox" name="equipment" value="lc2"> Laptop cart 2 (30 quantity) </input><br>

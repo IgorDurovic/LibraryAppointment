@@ -1,9 +1,9 @@
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function display_day_information( month, day, year ) {
-	
-	
-	
+
+
+
 }
 
 function readTextFile( file )
@@ -37,7 +37,6 @@ reader.onerror = function(event) {
 	console.error("File could not be read! Code " + event.target.error.code);
 };
 
-	reader.readAsText(file);
+	//reader.readAsText(file);
 }
 /**/
-
