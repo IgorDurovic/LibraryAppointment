@@ -33,7 +33,8 @@ $(function() {
                     start: start,
                 },
                 cache: false,
-                success: function() {
+                success: function(data) {
+                    window.alert(data);
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -46,10 +47,12 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function(xhr, desc, err) {
-                  //fail message
-                  console.log(xhr);
-                  console.log("Details: " + desc + "\nError:" + err);
+                error: function(xhr, desc, err, data) {
+                    window.alert(data);
+
+                    //fail message
+                    console.log(xhr);
+                    console.log("Details: " + desc + "\nError:" + err);
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");

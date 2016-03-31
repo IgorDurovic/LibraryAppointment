@@ -7,13 +7,19 @@ class Entry{
 	public $start = -1;
 	public $equipment = [];
     public $date = "";
-	
-	public function __contruct($NAME, $PERIOD, $EQUIPARRAY, $DATE){
+    public $email ="";
+    public $errs = "";
+
+
+	public function __construct($NAME, $PERIOD, $EQ, $DATE, $EMAIL){
 		$this->teacher = $NAME;
 		$this->start = $PERIOD;
-		$this->equipment = $EQUIPARRAY;
+		$this->equipment = $EQ;
         $this->date = $DATE;
+        $this->email = $EMAIL;
+        $this->errs;
 	}
+
 
     public function printtofile($value) {
         $FILEW = fopen("schedule.txt", "w") or die("Failed to write to file");
@@ -31,27 +37,65 @@ class Entry{
 
         fclose($FILEW);
     }
-//TODO: FINISH process
+
+
     public function Process() {
         foreach ($this->equipment as $value) {
-            if ($value.name == "room") {
+            if ($value['name'] == "room") {
                 continue;
             }
 
             $FILER = fopen("schedule.txt", "r") or die("Failed to read file");
 
             while(true) {
-                $piece = fgetc($FILER);
-                if ($piece == feof($FILER)) {
+                $eq = fgets($FILER);
+                if ($eq == feof($FILER)) {
                     fclose($FILER);
                     $this->printtofile($value);
+                    $this->errs .= "Requested item $eq booked on $this->date for $this->start period.\n";
                 }
+
+                $eq = trim($eq);
+                echo var_dump($eq);
+                $d = trim(fgets($FILER));
+                echo var_dump($d);
+
+                $p = trim(fgets($FILER));
+                echo var_dump($p);
+                $t = trim(fgets($FILER));
+
+                if ($value['value'] == $eq &&
+                    $this->date == $d &&
+                    $this->start == $p) {
+                    $this->errs .= "Requested item $eq is already booked on $d for $p period. $eq was not booked\n";
+                    break;
+                }
+
             }
 
             if ($FILER) {
                 fclose($FILER);
             }
         }
+
+        return true;
+    }
+
+    public function email() {
+        //emails the librarian
+        $to      = 'nithin.ch10@gmail.com';
+        $subject = 'LibraryAppointment';
+        $message = "Someone reserved equipment at West High:\n\n\nName: $this->teacher \n\nEmail: $this->email\n\nDate: $this->date \n\nEquipment: ";
+        foreach ($this->equipment as $value) {
+            $tmp = $value['value'];
+            $message .= "$tmp\n";
+        }
+        mail($to, $subject, $message);
+    }
+
+    public function __destruct()
+    {
+        unset($this);
     }
 }
 /*
@@ -67,9 +111,7 @@ start: start,
 $name = $_REQUEST['name'];
 $date = $_REQUEST['date'];
 $email = $_REQUEST['email'];
-$message = $_REQUEST['message'];
 $password = $_REQUEST['password'];
-$room = $_REQUEST['equipment'][0].value;
 $equipment = $_REQUEST['equipment'];
 $period = $_REQUEST['start'];
 
@@ -82,7 +124,7 @@ if(empty($name)  		||
     empty($equipment) ||
     empty($password))
   {
-	echo "Args missing!";
+	echo "There were empty fields!";
 	return false;
   }
 
@@ -93,36 +135,40 @@ if ($email_domain !== "slcschools.org") {
 	return false;
 }
 
+
+//Checks if the inputed email is valid
+$validEmails = fopen("Vaildemails.txt", "r") or die("Unable to open file");
+while(true){
+    $emailFormated = trim($email);
+    $temp = trim(fgets($validEmails));
+    if($temp == $emailFormated){
+        break;
+    }
+    else if(feof($validEmails)){
+        echo "Unrecognized email - Contact the librarian";
+        return false;
+    }
+}
+
+
 //password check
 if($password !== "PANTHERS"){
 	print "Incorrect Password";
 	return false;
 }
 
-$curFileR = fopen("schedule.txt", "r") or die("Unable to open file!");
-$curFileW = fopen("schedule.txt", "w") or die("Unable to open file!");
+//Make new entry
+$currTeacher = new Entry($name, $period, $equipment, $date, $email);
+//Write to file and process the request
+$currTeacher->Process();
+//email the librarian
+$currTeacher->email();
 
-// $validEmails = fopen("valid-mails.txt", "r") or die("Unable to open file");
-
-// while(true){
-// 	$emailFormated = trim($email);
-// 	$temp = trim(fget($validEmails));
-// 	if(temp == $emailFormated){
-// 		break;
-// 	}
-// 	else if(feof($validEmails)){
-// 		echo "Invalid email";
-// 		return false;
-// 	}
-// }
-
-
-$to      = 'nithin.ch10@gmail.com';
-$subject = 'LibraryAppointment';
-$message = "Someone reserved equipment at West High:\n\n\nName: $name \n\nEmail: $email \n\nDate: $date \n\nMessage: $message ";
-$headers = "From: $email" . "\r\n" .
-  "Reply-To: $email" . "\r\n";
-
-mail($to, $subject, $message, $headers);
+echo $currTeacher->errs;
+echo"\n\n";
+echo "Order Processed.";
+$currTeacher->__destruct();
 return true;
+
+
 ?>
