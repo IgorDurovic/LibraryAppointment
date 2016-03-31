@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL);
 
 class Entry{
 	public $teacher = "";
@@ -22,7 +20,8 @@ class Entry{
 
 
     public function printtofile($value) {
-        $FILEW = fopen("schedule.txt", "w") or die("Failed to write to file");
+        $FILEW = fopen("s./../statictxt/chedule.txt", "w");
+
         fwrite($FILEW, $value.value);
         fwrite($FILEW, "\n");
 
@@ -45,7 +44,7 @@ class Entry{
                 continue;
             }
 
-            $FILER = fopen("schedule.txt", "r") or die("Failed to read file");
+            $FILER = fopen("./../statictxt/schedule.txt", "r");
 
             while(true) {
                 $eq = fgets($FILER);
@@ -56,12 +55,8 @@ class Entry{
                 }
 
                 $eq = trim($eq);
-                echo var_dump($eq);
                 $d = trim(fgets($FILER));
-                echo var_dump($d);
-
                 $p = trim(fgets($FILER));
-                echo var_dump($p);
                 $t = trim(fgets($FILER));
 
                 if ($value['value'] == $eq &&
@@ -85,8 +80,12 @@ class Entry{
         //emails the librarian
         $to      = 'nithin.ch10@gmail.com';
         $subject = 'LibraryAppointment';
-        $message = "Someone reserved equipment at West High:\n\n\nName: $this->teacher \n\nEmail: $this->email\n\nDate: $this->date \n\nEquipment: ";
+        $room = $this->equipment[0]['value'];
+        $message = "Someone reserved equipment at West High:\n\n\nName: $this->teacher \n\nEmail: $this->email\n\nDate: $this->date \n\nRoom: $room\n\nEquipment:\n";
         foreach ($this->equipment as $value) {
+            if ($value['name'] == 'room') {
+                continue;
+            }
             $tmp = $value['value'];
             $message .= "$tmp\n";
         }
@@ -137,7 +136,7 @@ if ($email_domain !== "slcschools.org") {
 
 
 //Checks if the inputed email is valid
-$validEmails = fopen("Vaildemails.txt", "r") or die("Unable to open file");
+$validEmails = fopen("./../statictxt/Vaildemails.txt", "r");
 while(true){
     $emailFormated = trim($email);
     $temp = trim(fgets($validEmails));

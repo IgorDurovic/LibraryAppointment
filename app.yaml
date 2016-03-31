@@ -18,3 +18,9 @@ handlers:
 
 - url: /.*
   script: site/request/send_request.php
+
+- url: /statictxts
+  mime_type: text/plain
+  static_dir: site/statictxt
+  application_readable: true
+

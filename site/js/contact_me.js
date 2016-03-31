@@ -48,8 +48,6 @@ $(function() {
                     $('#contactForm').trigger("reset");
                 },
                 error: function(xhr, desc, err, data) {
-                    window.alert(data);
-
                     //fail message
                     console.log(xhr);
                     console.log("Details: " + desc + "\nError:" + err);
